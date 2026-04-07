@@ -1,0 +1,15 @@
+# Environment files
+.env
+.env.local
+.env*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+
+# Obsidian UI state (changes constantly, no meaningful signal)
+.obsidian/workspace.json
