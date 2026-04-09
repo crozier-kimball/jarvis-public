@@ -30,6 +30,13 @@ None required beyond the current conversation context.
 - Run `git add -A` to stage all modified, deleted, and new files
 - Before staging, verify nothing sensitive is included: check for `.env`, credentials, large binaries. If found, flag and ask the owner to exclude before continuing.
 
+### Step 2b — Update index.md
+
+- Check `git status --short` for any new or deleted `.md` files in `people/`, `artifacts/`, or `meeting-transcripts/meetings/`
+- If any exist: open `index.md`, add or remove their entries, update `last_updated`
+- If none: skip this step
+- This keeps the index current between /endday runs
+
 ### Step 3 — Create a commit message
 
 - Summarize what happened in this session from conversation context

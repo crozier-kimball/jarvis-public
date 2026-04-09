@@ -73,7 +73,16 @@ Based on today's work:
 - Add any new tasks surfaced in meetings or conversation
 - Defer items that clearly didn't happen and weren't mentioned as blocked
 
-### Step 5 — Compose the day summary
+### Step 5 — Update index.md
+
+- Open `index.md` at the project root
+- For any file created today: add a one-line entry under the appropriate section
+- For any file deleted today: remove its entry
+- For any file whose content changed significantly: update its one-line summary
+- Update `last_updated` in the frontmatter to today's date
+- Do not regenerate the full index — only apply today's delta
+
+### Step 7 — Compose the day summary
 
 Write a summary covering:
 - Accomplishments (specific, not vague — "finished visa doc outline" not "worked on visa")
@@ -84,11 +93,11 @@ Write a summary covering:
 
 Keep it under 10 bullets. Lead with completions.
 
-### Step 6 — Write the end-of-day summary into today's daily note
+### Step 8 — Write the end-of-day summary into today's daily note
 
-Open `artifacts/daily/YYYY-MM-DD.md` (create from template if it does not exist).
+**Daily note creation rule:** Endday does not create the daily note — the owner does, via their morning dump or voice note. Open `artifacts/daily/YYYY-MM-DD.md` (using the working date from the Day Boundary Rule). If it does not exist, write the End of Day section as the only content and note that /today was not run. If `## End of Day` already exists (endday was run earlier today), append a `### Late Session Addendum` block below it instead of replacing the section.
 
-Replace the `## End of Day` section with:
+Replace or append to the `## End of Day` section with:
 
 ```
 ## End of Day
@@ -114,11 +123,21 @@ Replace the `## End of Day` section with:
 
 Do not create a separate endday file. The daily note at `artifacts/daily/YYYY-MM-DD.md` is the single record for the day.
 
-### Step 7 — Commit
+### Step 9 — Update watched-site markers
+
+Open `artifacts/watched-sites.md`. For each auto-check site that was fetched during today's `/today` run:
+- Set `last_checked` to today's date
+- Set `last_seen_marker` to the marker that was extracted during the /today check (or re-fetch now if /today was not run today)
+
+For manual sites: update `last_verified` only if the owner confirmed they checked it during the day.
+
+Do not clear markers for sites that were not checked today.
+
+### Step 10 — Commit
 
 Run `/wrap` to stage and commit all changes. Use `endday: [brief description of day]` as the commit message instead of the default `wrap:` prefix.
 
-### Step 8 — Report
+### Step 11 — Report
 
 Show commit hash and files changed. Close with: "Run /today tomorrow morning to continue."
 
@@ -126,6 +145,7 @@ Show commit hash and files changed. Close with: "Run /today tomorrow morning to 
 
 - `artifacts/daily/YYYY-MM-DD.md` — single daily note with End of Day section populated
 - Updated `artifacts/Tasklist.md`
+- Updated `index.md` — delta only (new files added, removed files deleted, changed summaries updated)
 - Git commit via `/wrap` (message prefix: `endday:`)
 
 ## Edge Cases

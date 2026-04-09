@@ -54,6 +54,7 @@ Apply these rules automatically during ingestion.
 ### People -> Workstream Mappings
 
 - Reference the .obsidian graph and existing notes to identify known people and their associated workstreams. For example, if "McKay Marshall" appears in a transcript and has a people file that links to the "pcs" workstream, infer that the meeting likely touches the "pcs" workstream.
+- If a transcript materially discusses [[Jarvis Project]] strategy, architecture, rollout, scaling, or monetization, classify the meeting as `work` and include the `jarvis-project` workstream even when attendees are personal contacts.
 
 ## Step 1 â€” Scan for Transcripts (silent)
 
@@ -376,4 +377,3 @@ If the user confirms, append the approved patterns to the
   it was clearly directed at you. Otherwise log it under others' action items.
 - The spec evolves. If something isn't working, the user can ask Claude Code
   to suggest an edit to this file.
-
